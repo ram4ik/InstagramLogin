@@ -9,8 +9,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Image(systemName: "person.circle")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 100, height: 100, alignment: .bottom)
+                .clipShape(Circle()).shadow(radius: 10)
+                .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                .opacity(0.4)
+            Text("Foto App")
+                .font(Font.title)
+                .padding(.bottom)
+            TextField("Email", text: $email)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            SecureField("Password", text: $password)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+        }
     }
 }
 
